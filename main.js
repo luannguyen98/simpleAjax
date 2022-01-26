@@ -1,0 +1,21 @@
+$(document).ready(function(){
+    $('#addBtn').click(function(){
+      $.ajax({
+        type:'POST',
+        url:'adder.php',
+        data:{
+          num1:$('#num1').val(),
+          num2:$('#num2').val(),
+        },
+        beforeSend:function(){
+          $("#loader").show();
+          $("#output").hide();
+        },
+        success:function(data){ 
+          $('#output').html(data);
+          $("#loader").hide();
+          $("#output").show(); 
+        }
+      });
+    });
+  });
